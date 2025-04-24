@@ -41,4 +41,21 @@ function randomText() {
   }
   
   setInterval(rain, 100);
+
+  // Observer pour déclencher les animations au scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+// Cibler toutes les sections avec .fade-in
+document.querySelectorAll('.fade-in').forEach(section => {
+  observer.observe(section);
+});
+
   
